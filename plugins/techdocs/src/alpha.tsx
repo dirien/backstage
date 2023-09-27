@@ -18,6 +18,7 @@ import { default as React } from 'react';
 import {
   configApiRef,
   createApiFactory,
+  createRouteRef,
   discoveryApiRef,
   fetchApiRef,
   identityApiRef,
@@ -34,7 +35,15 @@ import {
   techdocsStorageApiRef,
 } from '@backstage/plugin-techdocs-react';
 import { TechDocsClient, TechDocsStorageClient } from './client';
-import { rootDocsRouteRef, rootRouteRef } from './routes';
+
+const rootRouteRef = createRouteRef({
+  id: 'plugin.techdocs.indexPage',
+});
+
+const rootDocsRouteRef = createRouteRef({
+  id: 'plugin.techdocs.readerPage',
+  params: ['namespace', 'kind', 'name'],
+});
 
 /** @alpha */
 export const TechDocsSearchResultListItemExtension =
